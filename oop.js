@@ -21,8 +21,8 @@
 //     velocity = {x: 0, y: 0};
 // }
 
-// var particles = [];
-// for(var i = 0; i < 100; i++) {
+// let particles = [];
+// for(let i = 0; i < 100; i++) {
 //     particles.push(new Particle(i, Math.floor(Math.random()*500)));
 // }
 
@@ -76,39 +76,75 @@
 // console.log(shane.name, assaf.name) //'Shane', 'John Doe'
 
 //********PROTOTYPE EXERCISE************* */
-var gravity = 0.5;
-var time = 0;
+// let gravity = 0.5;
+// let time = 0;
 
-function Particle(startX,startY) {
-    this.x = startX;
-    this.y = startY;
+// function Particle(startX,startY) {
+//     this.x = startX;
+//     this.y = startY;
+// }
+
+// Particle.prototype = {
+//     getVelocity: function(){
+//         return time * gravity;
+//     },
+
+//     move: function() {
+
+//       this.y += this.getVelocity();
+//       //if(this.y >= 500){console.log('bottom');}
+          
+//     }
+// }
+
+// let particles = [];
+// for(let i = 0; i < 100; i++) {
+//     particles.push(new Particle(i,Math.random()*500));
+// }
+
+// setInterval(function(){
+//     time++;
+//     particles.filter(function(p){
+//         console.log(p.x)
+//         return p.y < 500;
+//     })
+//     .forEach(function(p){
+//         p.move();
+//     })
+// },100)
+
+
+//*******OBJECT COMPOSITION**********/
+
+//contrived example
+let lion = {
+	roar: function(){console.log('roar')}
 }
 
-Particle.prototype = {
-    getVelocity: function(){
-        return time * gravity;
-    },
-
-    move: function() {
-
-      this.y += this.getVelocity();
-      if(this.y >= 500)
-          console.log('bottom');
-    }
+let goat = {
+	kick: function(){console.log('kick')}
 }
 
-var particles = [];
-for(var i = 0; i < 100; i++) {
-    particles.push(new Particle(i,Math.random()*500));
+let lizard = {
+	tail: true
 }
 
-setInterval(function(){
-    time++;
-    particles.filter(function(p){
-        console.log(p.x)
-        return p.y < 500;
-    })
-    .forEach(function(p){
-        p.move();
-    })
-},100)
+let chimera = {}
+Object.assign(chimera, lion, goat, lizard);
+
+console.log(chimera.roar(), chimera.kick(), chimera.tail);
+
+
+//real life example
+let baseConfig = {
+	appName: 'Slick',
+	apiKey: 'secretPassword',
+	apiBaseUrl: 'http://slickapp.co/api/'
+}
+
+let localConfig = Object.assign({}, baseConfig, {
+	apiKey: 'localPassword',
+	apiBaseUrl: 'http://localhost:3000/api'
+});
+
+console.log(localConfig.name, localConfig.apiBaseUrl);
