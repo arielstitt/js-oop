@@ -44,20 +44,33 @@
 //     }
 // }
 
-function Teacher(){
-    //look, I'm empty!    
-}
+// function Teacher(){
+//     //look, I'm empty!    
+// }
 
-Teacher.prototype = {
-    disposition: 'chaotic evil'
-}
+// Teacher.prototype = {
+//     disposition: 'chaotic evil'
+// }
 
-let shane = new Teacher();
-let assaf = new Teacher();
-console.log(shane.disposition, assaf.disposition) //evil, evil
+// let shane = new Teacher();
+// let assaf = new Teacher();
+// console.log(shane.disposition, assaf.disposition) //evil, evil
 
-//reassigning the value of disposition
-Teacher.prototype.disposition = 'happy';
-console.log(shane.disposition, assaf.disposition) //happy, happy
+// //reassigning the value of disposition
+// Teacher.prototype.disposition = 'happy';
+// console.log(shane.disposition, assaf.disposition) //happy, happy
 
 
+// //****** PROTOTYPE CHAIN ******/
+// function Teacher() {}
+
+// Teacher.prototype = {
+// 	name: 'John Doe'
+// }
+
+// let shane = new Teacher();
+// let assaf = new Teacher();
+
+// shane.name = "Shane";
+
+// console.log(shane.name, assaf.name) //'Shane', 'John Doe'
